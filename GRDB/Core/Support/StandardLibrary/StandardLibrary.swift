@@ -458,6 +458,12 @@ extension String: DatabaseValueConvertible, StatementColumnConvertible {
         switch dbValue.storage {
         case .string(let string):
             return string
+        case .double(let double):
+            return String(double)
+        case .int64(let int64):
+            return String(int64)
+        case .blob(let data):
+            return String(data: data, encoding: .utf8)
         default:
             return nil
         }

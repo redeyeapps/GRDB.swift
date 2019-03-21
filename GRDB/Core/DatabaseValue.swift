@@ -275,9 +275,6 @@ extension DatabaseValue {
         if let value = T.fromDatabaseValue(self) {
             return value
         }
-        if T.self is String, let value = Int64.fromDatabaseValue(self) {
-            return String(value) as! T
-        }
         if isNull {
             // Failed conversion from null: ok
             return nil
